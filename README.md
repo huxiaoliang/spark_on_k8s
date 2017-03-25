@@ -1,3 +1,4 @@
+
 # spark on k8s
 
  Create a spark cluster on k8s, then run a Zeppelin note book to lunch a task to spark cluster and show result
@@ -37,8 +38,9 @@ kubernetes       10.0.0.1     <none>        443/TCP          58m
 nginx-yn-nginx   10.0.0.237   <nodes>       80:31746/TCP     44m
 spark-master     10.0.0.93    <nodes>       7077:31584/TCP   11m
 spark-webui      10.0.0.99    <nodes>       8080:31764/TCP   3s
-[root@xhucfc02 spark]# 
+[root@xhucfc02 spark]#
 ```
+##### Note: spark web url ->  http://9.111.250.209:31764/
 ### 4.  Create spark worker
 ``` bash
 [root@xhucfc02 spark]# kubectl create -f spark-worker-controller.yaml 
@@ -89,10 +91,20 @@ spark-webui      10.0.0.99    <nodes>       8080:31764/TCP   2h
 zeppelin         10.0.0.141   <nodes>       8080:30980/TCP   2s
 [root@xhucfc02 spark]# 
 ```
+##### Note: Zeppelin web url ->  http://9.111.250.209:30980/
+### 7.   Copy test data file to spark worker
+``` bash
+[root@xhucfc02 spark]# kubectl cp /tmp/bank-full.csv spark-worker-controller-dpdr9:/opt/
+[root@xhucfc02 spark]# kubectl cp /tmp/bank-full.csv spark-worker-controller-nggtm:/opt/
+[root@xhucfc02 spark]# 
+```
+##### Get data file from reference[1]
+### 8. Run first Zeppelin note book by web gui
+##### Follow the example  according to reference[2]
+
 
 ## Reference
 
 [1] https://github.com/kubernetes/kubernetes/tree/release-1.4/examples/spark
 [2] https://zeppelin.apache.org/docs/0.5.5-incubating/tutorial/tutorial.html Zeppelin
-
 
