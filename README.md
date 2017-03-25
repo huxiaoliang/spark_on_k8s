@@ -106,5 +106,8 @@ zeppelin         10.0.0.141   <nodes>       8080:30980/TCP   2s
 ## Reference
 
 [1] https://github.com/kubernetes/kubernetes/tree/release-1.4/examples/spark
+
 [2] https://zeppelin.apache.org/docs/0.5.5-incubating/tutorial/tutorial.html Zeppelin
+
+[3] Docker file for all applications above: https://github.com/kubernetes-incubator/application-images/tree/master/spark
 
